@@ -1,4 +1,6 @@
 using BMES_REST_API.Database;
+using BMES_REST_API.Repositories;
+using BMES_REST_API.Repositories.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +36,9 @@ namespace BMES_REST_API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BMES_REST_API", Version = "v1" });
             });
             services.AddDbContext<BmesDbContext>(options => options.UseSqlite(Configuration["Data:BmesRestApi:ConnectionString"]));
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IBrandRepository, BrandRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

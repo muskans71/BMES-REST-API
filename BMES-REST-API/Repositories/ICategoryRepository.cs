@@ -12,7 +12,6 @@ namespace BMES_REST_API.Repositories
         public IEnumerable<Category> GetAllcategories();
         public void SaveCategory(Category n);
         public void EditCategory(Category n);
-
         public void Delete(Category category);
     }
 }
