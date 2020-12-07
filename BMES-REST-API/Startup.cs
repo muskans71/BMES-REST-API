@@ -1,6 +1,8 @@
+using BMES_REST_API.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +33,7 @@ namespace BMES_REST_API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BMES_REST_API", Version = "v1" });
             });
+            services.AddDbContext<BmesDbContext>(options => options.UseSqlite(Configuration["Data:BmesRestApi:ConnectionString"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
