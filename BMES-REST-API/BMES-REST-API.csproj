@@ -18,8 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Messages\DataTransferObjects\Shared\" />
-    <Folder Include="Messages\Response\Category\" />
-    <Folder Include="Messages\Response\Product\" />
     <Folder Include="Service\Implementations\" />
   </ItemGroup>
 

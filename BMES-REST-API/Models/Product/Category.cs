@@ -14,5 +14,6 @@ namespace BMES_REST_API.Models.Product
         public string MetaDescription { get; set; }
         public string MetaKeywords { get; set; }
         public CategoryStatus BrandStatus { get; set; }
+        public CategoryStatus CategoryStatus { get; internal set; }
     }
 }
