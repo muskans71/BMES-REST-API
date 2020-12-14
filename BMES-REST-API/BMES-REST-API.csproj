@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Messages\DataTransferObjects\Shared\" />
-    <Folder Include="Service\Implementations\" />
   </ItemGroup>
 
 </Project>
