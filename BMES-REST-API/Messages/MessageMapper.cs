@@ -46,6 +46,26 @@ namespace BMES_REST_API.Messages
 
             return brandDto;
         }
+        public List<BrandDto> MapToBrandDtos(IEnumerable<Brand> brands)
+        {
+            var brandDtos = new List<BrandDto>();
+            foreach (var brand in brands)
+            {
+                var brandDto = MapToBrandDto(brand);
+                brandDtos.Add(brandDto);
+            }
+            return brandDtos;
+        }
+        public List<CategoryDto> MapToCategoryDtos(IEnumerable<Category> category)
+        {
+            var categoryDtos = new List<CategoryDto>();
+            foreach (var c in category)
+            {
+                var ct = MapToCategoryDto(c);
+                categoryDtos.Add(ct);
+            }
+            return categoryDtos;
+        }
 
         public Category MapToCategory(CategoryDto categoryDto)
         {

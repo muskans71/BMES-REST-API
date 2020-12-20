@@ -2,7 +2,7 @@
 
 namespace BMES_REST_API.Messages.Response.Brand
 {
-    public class GetBrandRequest:ResponseBase
+    public class GetBrandResponse:ResponseBase
     {
         public BrandDto Brand { get; set; }
     }
