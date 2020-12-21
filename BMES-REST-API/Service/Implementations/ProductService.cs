@@ -39,18 +39,18 @@ namespace BMES_REST_API.Service.Implementations
             return deletebrandresponse;
         }
 
-        public FetchProductResponse FetchBrand(FetchProductRequest fetchproductRequest)
+        public FetchProductResponse FetchProduct(FetchProductRequest fetchproductRequest)
         {
             var product = catalogueService.FetchProducts(fetchproductRequest);
             return product;
         }
-        public GetProductResponse GetBrand(GetProductRequest getproductRequest)
+        public GetProductResponse GetProduct(GetProductRequest getproductRequest)
         {
             var product = productRepository.FindProductById(getproductRequest.Id);
             var productDTO = messageMapper.MapToProductDto(product);
             return new GetProductResponse { Product = productDTO };
         }
-        public UpdateProductResponse EditBrand(UpdateProductRequest updateProductRequest)
+        public UpdateProductResponse EditProduct(UpdateProductRequest updateProductRequest)
         {
             UpdateProductResponse updateProductResponse = null;
 

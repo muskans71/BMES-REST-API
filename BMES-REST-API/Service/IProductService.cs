@@ -11,9 +11,9 @@ namespace BMES_REST_API.Service
     {
         public CreateProductResponse SaveProduct(CreateProductRequest createProductRequest);
         public DeleteProductResponse DeleteProduct(DeleteProductRequest deleteProductRequest);
-        public FetchProductResponse FetchBrand(FetchProductRequest fetchproductRequest);
-        public GetProductResponse GetBrand(GetProductRequest getproductRequest);
-        public UpdateProductResponse EditBrand(UpdateProductRequest updateProductRequest);
+        public FetchProductResponse FetchProduct(FetchProductRequest fetchproductRequest);
+        public GetProductResponse GetProduct(GetProductRequest getproductRequest);
+        public UpdateProductResponse EditProduct(UpdateProductRequest updateProductRequest);
         
     }
 }
