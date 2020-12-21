@@ -11,8 +11,16 @@ namespace BMES_REST_API.Service.Implementations
 {
     public class ProductService:IProductService
     {
-        private IProductRepository productRepository;
+        private readonly IProductRepository productRepository;
+        private readonly ICatalogueService catalogueService;
         private MessageMapper messageMapper;
+
+        public ProductService(IProductRepository product, ICatalogueService catalogue)
+        {
+            productRepository = product;
+            catalogueService = catalogue;
+            messageMapper = new MessageMapper();
+        }
 
         public CreateProductResponse SaveProduct(CreateProductRequest createProductRequest)
         {
@@ -33,13 +41,8 @@ namespace BMES_REST_API.Service.Implementations
 
         public FetchProductResponse FetchBrand(FetchProductRequest fetchproductRequest)
         {
-            var product = productRepository.GetAllProducts();
-            var productDtos = messageMapper.MapToProductDtos(product);
-
-            return new FetchProductResponse
-            {
-                Products = productDtos
-            };
+            var product = catalogueService.FetchProducts(fetchproductRequest);
+            return product;
         }
         public GetProductResponse GetBrand(GetProductRequest getproductRequest)
         {

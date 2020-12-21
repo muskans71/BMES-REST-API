@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BMES_REST_API.Repositories
 {
-    interface ICategoryRepository
+     public interface ICategoryRepository
     {
         public Category FindCategoryById(long id);
         public IEnumerable<Category> GetAllcategories();

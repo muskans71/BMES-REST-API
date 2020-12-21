@@ -14,6 +14,12 @@ namespace BMES_REST_API.Service.Implementations
         private ICategoryRepository categoryRepository;
         private MessageMapper messageMapper;
 
+        public CategoryService(ICategoryRepository category)
+        {
+            categoryRepository = category;
+            messageMapper = new MessageMapper();
+        }
+
         public CreateCategoryResponse SaveCategory(CreateCategoryRequest createCategoryRequest)
         {
             var category = messageMapper.MapToCategory(createCategoryRequest.Category);

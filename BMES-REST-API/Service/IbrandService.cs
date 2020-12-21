@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BMES_REST_API.Service
 {
-    interface IbrandService
+    public interface IbrandService
     {
         public CreateBrandResponse SaveBrand(CreateBrandRequest createBrandRequest);
 

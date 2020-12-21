@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BMES_REST_API.Repositories
 {
-    interface IBrandRepository
+    public interface IBrandRepository
     {
         public Brand FindBrandById(long id);
         public IEnumerable<Brand> GetAllcategories();

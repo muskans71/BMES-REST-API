@@ -14,6 +14,11 @@ namespace BMES_REST_API.Service.Implementations
     {
         private IBrandRepository brandRepository;
         private MessageMapper messageMapper;
+        public BrandService(IBrandRepository brand)
+        {
+            brandRepository = brand;
+            messageMapper = new MessageMapper();
+        }
 
         public CreateBrandResponse SaveBrand(CreateBrandRequest createBrandRequest)
         {

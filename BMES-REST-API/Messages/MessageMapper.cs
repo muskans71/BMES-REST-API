@@ -66,6 +66,16 @@ namespace BMES_REST_API.Messages
             }
             return categoryDtos;
         }
+        public List<ProductDto> MapToProductDtos(IEnumerable<Product> product)
+        {
+            var productDtos = new List<ProductDto>();
+            foreach (var p in product)
+            {
+                var pt = MapToProductDto(p);
+                productDtos.Add(pt);
+            }
+            return productDtos;
+        }
 
         public Category MapToCategory(CategoryDto categoryDto)
         {

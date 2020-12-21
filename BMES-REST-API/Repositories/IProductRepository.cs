@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BMES_REST_API.Repositories
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
 
         public Product FindProductById(long id);
