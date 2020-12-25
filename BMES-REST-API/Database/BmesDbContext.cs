@@ -1,4 +1,5 @@
-﻿using BMES_REST_API.Models.Product;
+﻿using BMES_REST_API.Models.Cart;
+using BMES_REST_API.Models.Product;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,7 @@ namespace BMES_REST_API.Database
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Brand> Brands { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
     }
 }

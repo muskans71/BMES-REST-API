@@ -28,13 +28,21 @@ namespace BMES_REST_API.Controllers
             getProductRequest.Id = id;
             return productService.GetProduct(getProductRequest);
         }
-
-        [HttpGet]
-        public ActionResult<FetchProductResponse> GetProducts()
+        [HttpGet("{categorySlug}/{brandSlug}/{page}/{productsPerPage}")]
+        public ActionResult<FetchProductResponse> GetProducts(string categorySlug, string brandSlug, int page, int productsPerPage)
         {
-            var fetchProductRequest = new FetchProductRequest();
-            return productService.FetchProduct(fetchProductRequest);
+            var fetchProductsRequest = new FetchProductRequest
+            {
+                PageNumber = page,
+                ProductsPerPage = productsPerPage,
+                CategorySlug = categorySlug,
+                BrandSlug = brandSlug
+            };
+            var fetchProductsResponse = productService.FetchProduct(fetchProductsRequest);
+            return fetchProductsResponse;
         }
+
+        
         [HttpPost]
         public ActionResult<CreateProductResponse> PostProduct(CreateProductRequest createProductRequest)
         {

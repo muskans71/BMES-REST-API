@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BMES_REST_API.Migrations
 {
-    public partial class productCatalogue : Migration
+    public partial class ProductCatalogue : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,6 +40,7 @@ namespace BMES_REST_API.Migrations
                     MetaDescription = table.Column<string>(type: "TEXT", nullable: true),
                     MetaKeywords = table.Column<string>(type: "TEXT", nullable: true),
                     BrandStatus = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryStatus = table.Column<int>(type: "INTEGER", nullable: false),
                     CreateDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     ModifiedDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false)

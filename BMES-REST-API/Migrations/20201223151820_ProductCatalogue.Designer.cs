@@ -3,80 +3,20 @@ using System;
 using BMES_REST_API.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BMES_REST_API.Migrations
 {
     [DbContext(typeof(BmesDbContext))]
-    partial class BmesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201223151820_ProductCatalogue")]
+    partial class ProductCatalogue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.0");
-
-            modelBuilder.Entity("BMES_REST_API.Models.Cart.Cart", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset>("CreateDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset>("ModifiedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("cartStatus")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("uniqueCardId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Carts");
-                });
-
-            modelBuilder.Entity("BMES_REST_API.Models.Cart.CartItem", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("CardId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long?>("CartId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset>("CreateDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset>("ModifiedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("CartItems");
-                });
 
             modelBuilder.Entity("BMES_REST_API.Models.Product.Brand", b =>
                 {
@@ -232,23 +172,6 @@ namespace BMES_REST_API.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("BMES_REST_API.Models.Cart.CartItem", b =>
-                {
-                    b.HasOne("BMES_REST_API.Models.Cart.Cart", "Cart")
-                        .WithMany("cartItems")
-                        .HasForeignKey("CartId");
-
-                    b.HasOne("BMES_REST_API.Models.Product.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cart");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("BMES_REST_API.Models.Product.Product", b =>
                 {
                     b.HasOne("BMES_REST_API.Models.Product.Brand", "Brand")
@@ -266,11 +189,6 @@ namespace BMES_REST_API.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("BMES_REST_API.Models.Cart.Cart", b =>
-                {
-                    b.Navigation("cartItems");
                 });
 #pragma warning restore 612, 618
         }
