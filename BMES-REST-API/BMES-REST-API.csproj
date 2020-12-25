@@ -17,10 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Messages\DataTransferObjects\Cart\" />
     <Folder Include="Messages\DataTransferObjects\Shared\" />
-    <Folder Include="Messages\Request\Cart\" />
-    <Folder Include="Messages\Response\Cart\" />
   </ItemGroup>
 
 </Project>
