@@ -5,6 +5,7 @@ using BMES_REST_API.Service;
 using BMES_REST_API.Service.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +46,10 @@ namespace BMES_REST_API
             services.AddTransient<IbrandService, BrandService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICatalogueService, CatalogueService>();
+            services.AddTransient<ICartRepository, CartRepository>();
+            services.AddTransient<ICartItemRepository, CartItemRepository>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<ICartService, CartService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

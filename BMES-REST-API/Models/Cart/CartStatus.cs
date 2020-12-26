@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BMES_REST_API.Models.Cart
 {
-    public enum CartStatus 
+    public enum cartStatus 
     {
         Open=0,
         CheckedOut =1

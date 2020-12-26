@@ -1,4 +1,6 @@
-﻿using BMES_REST_API.Messages.DataTransferObjects.Product;
+﻿using BMES_REST_API.Messages.DataTransferObjects.Cart;
+using BMES_REST_API.Messages.DataTransferObjects.Product;
+using BMES_REST_API.Models.Cart;
 using BMES_REST_API.Models.Product;
 using System;
 using System.Collections.Generic;
@@ -170,5 +172,67 @@ namespace BMES_REST_API.Messages
 
             return productDto;
         }
+        public CartDto MapToCartDto(Cart cart)
+        {
+            var cartDto = new CartDto();
+            if (cart != null)
+            {
+                cartDto.Id = cart.Id;
+                cartDto.UniqueCartId = cart.UniqueCartId;
+                cartDto.CartStatus = (int)cart.CartStatus;
+                cartDto.CreateDate = cart.CreateDate;
+                cartDto.ModifiedDate = cart.ModifiedDate;
+                cartDto.IsDeleted = cart.IsDeleted;
+            }
+            return cartDto;
+        }
+
+        public Cart MapToCart(CartDto cartDto)
+        {
+            var cart = new Cart();
+
+            if (cartDto != null)
+            {
+                cart.Id = cartDto.Id;
+                cart.UniqueCartId = cartDto.UniqueCartId;
+                cart.CartStatus = (cartStatus)cartDto.CartStatus;
+                cart.CreateDate = cartDto.CreateDate;
+                cart.ModifiedDate = cartDto.ModifiedDate;
+                cart.IsDeleted = cartDto.IsDeleted;
+            };
+
+            return cart;
+        }
+
+        public CartItemDto MapToCartItemDto(CartItem cartItem)
+        {
+            CartItemDto cartItemDto = null;
+
+            if (cartItem.Product != null)
+            {
+                var productDto = MapToProductDto(cartItem.Product);
+
+                cartItemDto = new CartItemDto
+                {
+                    Id = cartItem.Id,
+                    CartId = cartItem.CartId,
+                    Product = productDto,
+                    Quantity = cartItem.Quantity
+                };
+            }
+
+            return cartItemDto;
+        }
+
+        public CartItem MapToCartItem(CartItemDto cartItemDto)
+        {
+            return new CartItem
+            {
+                CartId = cartItemDto.CartId,
+                ProductId = cartItemDto.Product.Id,
+                Quantity = cartItemDto.Quantity
+            };
+        }
+
     }
 }
