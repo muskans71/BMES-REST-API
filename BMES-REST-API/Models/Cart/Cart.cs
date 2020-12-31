@@ -13,8 +13,7 @@ namespace BMES_REST_API.Models.Cart
             cartItems = new List<CartItem>();
         }
         public string UniqueCartId { get; set; }
-        public cartStatus cartStatus { get; set; }
-        public cartStatus CartStatus { get; internal set; }
+        public cartStatus CartStatus { get; set; }
         public IEnumerable<CartItem> cartItems { get; set; }
     }
 }

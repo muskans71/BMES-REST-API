@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BMES_REST_API.Service
 {
-    interface ICartService
+     public interface ICartService
     {
         public string UniqueCartId();
         public Cart GetCart();

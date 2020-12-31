@@ -38,6 +38,9 @@ namespace BMES_REST_API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BMES_REST_API", Version = "v1" });
             });
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddDistributedMemoryCache();
             services.AddDbContext<BmesDbContext>(options => options.UseSqlite(Configuration["Data:BmesRestApi:ConnectionString"]));
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IBrandRepository, BrandRepository>();
@@ -48,8 +51,10 @@ namespace BMES_REST_API
             services.AddTransient<ICatalogueService, CatalogueService>();
             services.AddTransient<ICartRepository, CartRepository>();
             services.AddTransient<ICartItemRepository, CartItemRepository>();
+            services.AddTransient<IAddressRepository, AddressRepository>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IAddressRepository, AddressRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +68,7 @@ namespace BMES_REST_API
             }
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
