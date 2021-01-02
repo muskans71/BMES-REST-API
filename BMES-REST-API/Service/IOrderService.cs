@@ -1,11 +1,12 @@
-﻿using BmesRestApi.Messages.Request.Order;
-using BmesRestApi.Messages.Response.Order;
+﻿using BMES_REST_API.Messages.Request;
+using BMES_REST_API.Messages.Request.Order;
+using BMES_REST_API.Messages.Response.Order;
 
 namespace BmesRestApi.Services
 {
     public interface IOrderService
     {
-        GetOrderResponse GetOrder(GetOrderRequest getOrderRequest);
-        FetchOrdersResponse GetOrders(FetchOrdersRequest fetchOrdersRequest);
+        public GetOrderResponse GetOrder(GetOrderRequest getOrderRequest);
+        public FetchOrderResponse GetOrders(FetchOrderRequest fetchOrdersRequest);
     }
 }

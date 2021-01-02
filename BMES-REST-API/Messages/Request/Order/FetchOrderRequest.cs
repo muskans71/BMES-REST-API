@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BMES_REST_API.Messages.Request
 {
-    public class FetchOrderResponse
+    public class FetchOrderRequest
     {
         public int PageNumber { get; set; }
         public int OrdersPerPage { get; set; }

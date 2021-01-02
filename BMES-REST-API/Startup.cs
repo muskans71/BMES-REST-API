@@ -1,4 +1,6 @@
 using BMES_REST_API.Database;
+using BMES_REST_API.Infrastructure;
+using BMES_REST_API.Models.Shared;
 using BMES_REST_API.Repositories;
 using BMES_REST_API.Repositories.Implementations;
 using BMES_REST_API.Service;
@@ -6,6 +8,7 @@ using BMES_REST_API.Service.Implementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -42,6 +45,9 @@ namespace BMES_REST_API
             services.AddSession();
             services.AddDistributedMemoryCache();
             services.AddDbContext<BmesDbContext>(options => options.UseSqlite(Configuration["Data:BmesRestApi:ConnectionString"]));
+            services.AddDbContext<BmesIdentityDbContext>(options => options.UseSqlite(Configuration["Data:BmesIdentity:ConnectionString"]));
+            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<BmesIdentityDbContext>();
+            services.AddJwtAuth(Configuration);
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IBrandRepository, BrandRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();

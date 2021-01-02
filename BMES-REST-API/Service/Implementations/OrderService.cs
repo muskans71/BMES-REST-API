@@ -1,5 +1,6 @@
-﻿using BmesRestApi.Messages.Request.Order;
-using BmesRestApi.Messages.Response.Order;
+﻿using BMES_REST_API.Messages.Request;
+using BMES_REST_API.Messages.Request.Order;
+using BMES_REST_API.Messages.Response.Order;
 using BmesRestApi.Repositories;
 
 namespace BmesRestApi.Services.Implementations
@@ -18,9 +19,9 @@ namespace BmesRestApi.Services.Implementations
             return new GetOrderResponse();
         }
 
-        public FetchOrdersResponse GetOrders(FetchOrdersRequest fetchOrdersRequest)
+        public FetchOrderResponse GetOrders(FetchOrderRequest fetchOrdersRequest)
         {
-            return new FetchOrdersResponse();
+            return new FetchOrderResponse();
         }
     }
 }
